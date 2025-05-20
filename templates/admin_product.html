@@ -1,0 +1,38 @@
+{% extends "base2.html" %}
+{% block main_content %}
+    <main class="two_column_section">
+    <section><a href="{{ url_for( 'admin_product',jewel_id=jewel['jewel_id']) }}"><img class="bigimg" src="{{url_for('static',filename=jewel['name']~ '.jpg')}}" alt="Image"></a></section>
+    <section><h1>{{jewel["name"]}}</h1>
+    <ul class="someBlock">
+
+        <li>
+            <em>Stock: </em>{{jewel["stock"]}}<a href="{{url_for( 'add_stock', jewel_id=jewel['jewel_id'] ) }}" class="clickchange">
+                ➕
+            </a><a href="{{url_for( 'sub_stock', jewel_id=jewel['jewel_id'] ) }}" class="clickchange">
+                ➖
+            </a>
+        </li>
+        <li>
+            <em>Price: </em>{{jewel["price"]}}
+        </li>
+        <li>
+            <em>Type:</em>{{jewel["type"]}}
+        </li>
+        <li>
+            <em>Gender:</em>{{jewel["gender"]}}
+        </li>
+        <li>
+            <em>Description:</em>{{jewel["description"]}}
+        </li>
+        
+    </ul>
+</section>
+<section>
+    <a href="{{url_for( 'sold_out', jewel_id=jewel['jewel_id'] ) }}" class="clickchange">
+        DELETE PRODUCT
+    </a>
+</li>
+    
+</section>
+</main>
+{% endblock %}

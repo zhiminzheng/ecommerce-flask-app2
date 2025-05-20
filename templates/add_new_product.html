@@ -1,0 +1,63 @@
+{% extends "base2.html" %}
+    
+{%block title%}
+Home page
+{%endblock%}
+
+{%block aside_content%}
+<section>
+        <table>
+            
+            <tr>
+                <th><a href="{{url_for('add_new_product')}}">Add New Product</a></th>
+            </tr>
+
+        </table> 
+
+{%endblock%}
+
+
+{% block main_content %}
+<h1>Add new product</h1>
+<form action="" method="post" novalidate>
+    <table>
+        {{ form.hidden_tag()}}
+        <tr>
+        <td>{{ form.name.label }}</td>
+        <td>{{ form.name()}}</td>
+        <td>{% for error in form.name.errors %}
+            {{ error}}
+        {% endfor %}</td>
+        </tr>
+        <tr>
+        <td>{{ form.price.label }}</td>
+        <td>{{ form.price()}}</td>
+        <td>{% for error in form.price.errors %}
+            {{ error}}
+        {% endfor %}</td>
+        </tr>
+        <tr>
+        <td>{{ form.type.label }}</td>
+        <td>{{ form.type()}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.gender.label }}</td>
+            <td>{{ form.gender()}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.description.label }}</td>
+            <td>{{ form.description()}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.stock.label }}</td>
+            <td>{{ form.stock()}}</td>
+        <td>{% for error in form.stock.errors %}
+            {{ error}}
+        {% endfor %}</td>
+        </tr>
+        <tr>
+        <td>{{ form.submit() }}</td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

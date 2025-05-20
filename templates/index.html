@@ -1,0 +1,56 @@
+
+    {% extends "base.html" %}
+    
+    {%block title%}
+    Home page
+    {%endblock%}
+   
+    {%block aside_content%}
+
+    <form method="POST" action="" novalidate>
+            {{form.hidden_tag()}}
+            <table class="container3">
+                <div>
+                
+                <tr>
+                    <th>{{form.price.label}}</th>
+                    <td>{{form.price()}}</td>
+                </tr>
+                <tr>
+
+                    <th>{{form.type.label}}</th>
+                    <td>{{form.type()}}</td>
+                </tr>
+                <tr>
+                    <th>{{form.gender.label}}</th>
+                    <td>{{form.gender()}}{{form.submit()}}</td>
+                </tr>
+                              
+            </table> 
+   
+    </form>
+    {%endblock%}
+
+
+ 
+    {% block main_content %}
+<section class="threeColLayout">
+            {% for jewel in jewels%}
+            <section class="sectionHover">           
+                    <ul><li><a href="{{ url_for( 'jewel',jewel_id=jewel['jewel_id']) }}"><img src="{{url_for('static',filename=jewel['name']~ '.jpg')}}" alt="Image"></a></li></ul>
+                    <ul class="fontsize2">
+                    <li>{{ jewel["name"]}}</li>
+                    <li>{{ jewel["price"]}} €</li>
+                    <li>{{ jewel["gender"]}}</li>
+                    <li>{{ jewel["type"]}}</li>
+                    <li>
+                        <a href="{{ url_for( 'jewel',jewel_id=jewel['jewel_id']) }}">
+                            Details</a>
+                        </li>
+                    </ul>
+
+            </section>
+            {%endfor%}
+    </section>
+
+    {% endblock %}

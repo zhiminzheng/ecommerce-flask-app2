@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{%block title%}Cart{%endblock%}
+
+{% block main_content %}
+   <form method="post" action="" novalidate>
+    <h1>your information</h1>
+    {{form.hidden_tag()}}
+    {{form.address.label}}
+    {{form.address()}}
+    <br/>
+    {{form.phone_number.label}}
+    {{form.phone_number()}}
+    <br/>
+    {{form.submit()}}
+</form>
+{% endblock %}

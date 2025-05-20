@@ -1,0 +1,42 @@
+
+{% extends "base2.html" %}
+    
+{%block title%}
+Home page
+{%endblock%}
+
+{%block aside_content%}
+<section>
+        <table>
+            
+            <tr>
+                <th><a href="{{url_for('add_new_product')}}" class="clickchange">Add New Product</a></th>
+            </tr>
+
+        </table> 
+
+{%endblock%}
+
+
+{% block main_content %}
+<section class="threeColLayout">
+{% for jewel in jewels%}
+<section class="sectionHover" >
+
+        <ul><li><a href="{{ url_for( 'admin_product',jewel_id=jewel['jewel_id']) }}"><img src="{{url_for('static',filename=jewel['name']~ '.jpg')}}" alt="Image"></a></li></ul>
+        <ul>
+        <li>Product: {{ jewel["name"]}}</li>
+        <li>Stock: {{ jewel["stock"]}}</li>
+        <li>{{ jewel["price"]}} €</li>
+        <li>{{ jewel["gender"]}}</li>
+        <li>{{ jewel["type"]}}</li>
+        <li>
+            <a href="{{ url_for( 'admin_product',jewel_id=jewel['jewel_id']) }}" class="clickchange">
+                change</a>
+            </li>
+        </ul>
+
+</section>
+{%endfor%}
+</section>
+{% endblock %}

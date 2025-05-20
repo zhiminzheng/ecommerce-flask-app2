@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{%block title%}
+Home page
+{%endblock%}
+{% block main_content %}
+    <h1>Jewelry items</h1>
+    <table>
+        {% for jewel in jewels%}
+            <tr>
+                <td>{{ jewel["name"]}}</td>
+                <td>{{ jewel["price"]}}</td>
+                <td>{{ jewel["gender"]}}</td>
+                <td>{{ jewel["type"]}}</td>
+                <td>
+                    <a href="{{ url_for( 'jewel',jewel_id=jewel['jewel_id']) }}">
+                        Details</a>
+                </td>
+            </tr>
+        {%endfor%}
+    </table>
+{% endblock %}

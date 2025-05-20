@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>{%block title%}{%endblock%}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+    </head>
+    <body>
+        <header class="fontsize">
+            {% block head_content%}
+           
+            <ul>
+                <li><a href="{{url_for('admin_index')}}">INTERFACE</a></li>
+                <li><a href="{{url_for('management')}}">MANAGEMENT</a></li>
+                <li><a href="{{url_for('admin_order')}}">ORDERS</a></li>
+
+            </ul>
+            <div>
+            <table>
+            {% if g.admin %}
+                <tr>
+                    <th><img class="loginImg"src="{{url_for('static',filename='adminlogined.png')}}" alt="Image"></th>
+                    <th>admin id:{{g.admin}}</th>
+                </tr>
+
+                <tr>
+                    <th><a href="{{url_for('logout')}}">Logout</a></th>
+                </tr>
+            {% else %}
+                <tr>
+                    <th>|</th>
+                    <th><a href="{{url_for('register')}}">User register</a></th>
+                </tr>
+
+                <tr>
+                    <th><img class="loginImg"src="{{url_for('static',filename='login.png')}}" alt="Image"></th>
+                    <th><a href="{{url_for('login')}}">User login</a></th>
+                </tr>
+                <tr>
+                    <th>|</th>
+                    <th><a href="{{url_for('admin_register')}}">Admin register</a></th>
+                </tr>
+
+                <tr>
+                    <th><img class="loginImg"src="{{url_for('static',filename='adminlogin.png')}}" alt="Image"></th>
+                    <th><a href="{{url_for('admin_login')}}">Admin login</a></th>
+                </tr>
+            {% endif %}
+            </table>
+            </div>
+            {%endblock%}
+        </header>
+
+        <aside>
+            {% block aside_content%}{% endblock%}           
+        </aside>
+        <main>
+        {% block main_content %}{% endblock %}
+        </main>
+
+    </body>
+</html>

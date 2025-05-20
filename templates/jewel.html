@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block main_content %}
+    <main class="two_column_section">
+    <section><a href="{{ url_for( 'jewel',jewel_id=jewel['jewel_id']) }}"><img class="bigimg" src="{{url_for('static',filename=jewel['name']~ '.jpg')}}" alt="Image"></a></section>
+    <section><h1>{{jewel["name"]}}</h1>
+        <ul class="someBlock">
+            <li>
+                <em>Stock: </em>{{jewel["stock"]}}
+            </li>
+            <li>
+                <em>Price: </em>{{jewel["price"]}}
+            </li>
+            <li>
+                <em>Type:</em>{{jewel["type"]}}
+            </li>
+            <li>
+                <em>Gender:</em>{{jewel["gender"]}}
+            </li>
+            <li>
+                <em>Description:</em>{{jewel["description"]}}
+            </li>
+            
+        </ul>
+</section>
+<section>
+        <a href="{{url_for( 'add_to_cart', jewel_id=jewel['jewel_id'] ) }}" class="clickchange">
+            Add to cart
+        </a>
+</section>
+</main>
+{% endblock %}
